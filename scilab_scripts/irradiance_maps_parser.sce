@@ -8,7 +8,6 @@ for s = 0:18
         line = lines(x)
         values = tokens(line)
         irradiance_map_cartesian(x-28,:,s+1) = strtod(values)
-        i = i+1
     end
 end
 
