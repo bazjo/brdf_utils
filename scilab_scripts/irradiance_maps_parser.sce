@@ -1,5 +1,5 @@
 irradiance_map_cartesian = zeros(256, 256, 19) //x,y,s
-irradiance_map_polar = zeros(360, 90, 19) //a,e,s
+irradiance_map_spherical = zeros(360, 90, 19) //a,e,s
 
 for s = 0:18
     path = "io/irradiance_maps/100k_Rays/" + string(s*5) + "_deg.txt"
@@ -15,8 +15,11 @@ end
 for a = 1:360
     for e = 1:90
         for s = 1:19
-            irradiance_map_polar(a,e,s) = 0
-            //wrong trasformation atm. square(circle inside square) needs to be projected onto sperical half-plane "orange peel"
+            r = 128 * tand((90-e)/2)
+            x = round(r*cosd(a))+128
+            y = round(r*sind(a))+128
+            
+            irradiance_map_spherical(a,e,s) = irradiance_map_cartesian(x, y, s)
         end
     end
 end
