@@ -1,6 +1,6 @@
 temperature = 300
 wavelength = 0.55
-source_azimuth = 180
+source_azimuth = 0
 absorbtion = 0.05
 
 surface_property = mopen("io/exported.brdf.txt", "wt");
@@ -10,7 +10,7 @@ header = mgetl("assets/surface_property_composer/header_template.cfg")
 mputl(header, surface_property)
 
 //Generate Surface Data Columns
-for incidence_angle=0:5:85
+for incidence_angle=45//5:5:80
     mputstr(string(temperature), surface_property) //Temperature
     mputstr(ascii(9), surface_property)// \t the scilab way
     mputstr(string(wavelength), surface_property) //Wavelength
@@ -34,8 +34,8 @@ end
 header = mgetl("assets/surface_property_composer/table_bsdf_data_template.cfg")
 mputl(header, surface_property)
 
-for incidence_angle=0:5:85
-    for scatter_beta=0:0.05:2
+for incidence_angle=45//5:5:80
+    for theta=5:5:80//scatter_beta=0:0.034689402098049:0.9//theta=5:5:80//scatter_beta=0:0.05:2
         for scatter_azimuth=0:10:350
             mputstr(string(temperature), surface_property) //Temperature
             mputstr(ascii(9), surface_property)// \t the scilab way
@@ -45,11 +45,13 @@ for incidence_angle=0:5:85
             mputstr(ascii(9), surface_property)
             mputstr(string(source_azimuth), surface_property) //AziAngle
             mputstr(ascii(9), surface_property)
-            mputstr(string(scatter_beta), surface_property) //ScatterBeta
+            mputstr(string(abs(sind(theta)-sind(incidence_angle))), surface_property) //ScatterBeta
+            //mputstr(string(scatter_beta), surface_property) //ScatterBeta
             mputstr(ascii(9), surface_property)
             mputstr(string(scatter_azimuth), surface_property) //ScatterAzimuth
             mputstr(ascii(9), surface_property)
-            mputstr(string(0.045654), surface_property) //BRDF
+            //mputstr(string(0.120387), surface_property) //BRDF
+            mputstr(string(irradiance_map_theta(theta/5,incidence_angle/5)/1000000), surface_property) //BRDF
             mputstr(ascii(9), surface_property)
             mputstr("0", surface_property) //BTDF
             mputstr(ascii(9), surface_property)
