@@ -1,0 +1,19 @@
+TracePro Surface Property Data
+File Name	C:\Users\Philipp\AppData\Roaming\Lambda Research Corporation\TracePro\TracePro.db
+TracePro Release: 19 6 0
+Database Version: 4 1 0
+Data generated at 15:24:09 January 23, 2020
+
+Name	PerfectMirrorTEST
+Catalog	Default
+Description	
+Coating    1
+Scatter    3.5
+Interaction 0
+Polarization	0
+User_Data  0
+Solve	BRDF
+
+Temperature	Wavelength	IncAngle	AziAngle	Abso_S	Abso_P	Refl_S	Refl_P	Tran_S	Tran_P	PhaseRefl	PhaseTran	BRDF_A	BRDF_B	BRDF_By	BRDF_g	BRDF_gy	BTDF_A	BTDF_B	BTDF_By	BTDF_g	BTDF_gy
+300			0.55			0			0			0		0		1		1		0		0		0			0			0		0.1		0.1		0		0		0		0.1		0.1		0		0
+SAVE-DATA
