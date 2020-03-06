@@ -49,6 +49,7 @@ It has to be noted, that due to the nature of the ScatterBeta calculation, there
 * only output a single theta_zero, which is the workaround implemented at the moment
 * interpolate the Scatter_Beta values onto a smaller grid common for all theta_zero values, greatly increasing the file size
 * set the angles for the goniometer measurement, so that the Scatter_Beta values can be rounded to the same values for all theta_zero values
-with tha last option beeing the most promising.
+
+with the last option being the most promising.
 
 ## Further down the Road
