@@ -1,5 +1,5 @@
 ## Trace Pro Script / Macro
-**Requires** TracePro file containing a Grid-Source, Sample and optional a detector. Grid-Source has to be set xxxx. 
+**Requires** TracePro file containing a Grid-Source, Sample and optional a detector. The Grid-Source must be perpendicular to the sample and the rays must point to the sample.
 
 **Returns** A series of .txt and .bmp files for irradiance data for specific angles. The Grid-Source is automatically rotated around the sample in 5° steps. Each file is called x_deg (x stays for specific angle).
 
