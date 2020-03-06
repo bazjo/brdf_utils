@@ -1,7 +1,6 @@
 # Folder Structure
-**Export_BRDF** - contains different exported brdf-files as .txt
-
-**irradiance_maps** - contains irradiance maps for exported brdf-files
+* **Export_BRDF** - contains different exported brdf-files as .txt
+* **irradiance_maps** - contains irradiance maps for exported brdf-files
 
 ## Validation Process
 
