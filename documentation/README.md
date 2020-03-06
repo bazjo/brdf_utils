@@ -2,6 +2,7 @@
 The purpose of this functional documentation is to give the reader an overview on how this project came to be the way it is presented and what to do with the provided scripts. Sources are mainly the TracePro documetation excerpts located in the same folder
 
 ## About the TracePro BRDF Understanding
+TracePro expects brdf data to be provided in form of a Harvey-Shack BSDF Format. With this
 
 ## About the TracePro Surface Property File
 TracePro Surface Property files can be used to decribe all sort of surface properties, not only scattering ones. Surfaces in TracePro can be described through those files, which have distinctive structure, which is explained in the TracePro documentation. The focus here is to name the most important bits of the format for brdf definition.
@@ -22,6 +23,7 @@ The surface data columns section provides general surface properties for differe
 The brdf data colums feature the same keys as the surface data columns described above, but different values. For every incidence angle, a complete set of numerical scattering information is provided in the form of brdf and (not used by us) btdf values in the form of ScatterBeta and ScatterAzimuth values as per the Harvey-Shack BSDF model described above.
 
 ## A Note on Energy Conversation and Quantitative Measurements
+
 
 ## First Idea - Generating BRDF Data from BRDF Data
 
