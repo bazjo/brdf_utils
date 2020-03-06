@@ -1,27 +1,10 @@
 ;--------------------------------------------------------------------------------------------------------------------
-;--------------------------------------------------------------------------------------------------------------------
 ;                    Th Koeln Campus Deutz
-;
-;--------------------------------------------------------------------------------------------------------------------
-;--------------------------------------------------------------------------------------------------------------------
-;  Projectname:      Simulation and measurement of the scattering properties of real material samples
-;					
-;  Description:      Move position of Grid Source and save irradiance data as .txt - & .bmp - file
-;                    Those files will later be used to evaluate BRDF
-;		     The grid-source is rotated in 5 deg per step around the probe
-;		     By using the rotational symmetry we only need to evaluate from 0 - 90 deg.					 
 ;--------------------------------------------------------------------------------------------------------------------
 ;  Author:           Philipp Weber
 ;  Date:             05.12.2019
 ;  Version:          0.0
 ;  Comment:          Initial draft
-;
-;--------------------------------------------------------------------------------------------------------------------
-;
-;  Requirements:     Before using macro it must be ensured that grid-source is set orthogonal to the probe
-;		     Check how many rays should be traced
-;		     Check if name of Probe is correct 
-;		     Check if file path and name is correct and folder exists
 ;
 ;(file:new)
 (define GridSourceMove
