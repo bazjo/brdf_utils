@@ -42,7 +42,7 @@
 	; Variables for rotation loop
 	(define rotAngStart 0)		; starting Value
 	(define rotAngInc -5)		; increment Value
-	(define rotAngEnd -90)		; End Value
+	(define rotAngEnd -85)		; End Value
 	
 	; Variables for "dynamic" naming of the individual files (x degrees) 
 	(define fileName )
@@ -56,7 +56,7 @@
 	; Include grid source in the raytrace
 	(raytrace:set-grid-source-flag #t)			
 
-   ; Loop from 0 to 90 deg (90deg is pretty useless cause doesnt show any irradiance on flat surfaces) 
+   ; Loop from 0 to 85
 	(do ( (angVal rotAngStart (+ angVal rotAngInc ) ) )
 		( (< angVal rotAngEnd) angVal)
 		; Set file name to current angle, due to negative angles multiply with "-1" 
