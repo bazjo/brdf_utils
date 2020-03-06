@@ -9,6 +9,7 @@ TracePro Surface Property files can be used to decribe all sort of surface prope
 A surface property definition file mainly consists of three parts, a header, a surface data columns section, and a bsdf data colums section.
 
 The Header defines general aspects of the surface. For our purposes, the following flags are usually important
+
 Flag | Value | Description
 --- | --- | ---
 Coating | 1 | *tabular data* seems to specify whether the surface data colums are used or not, further documentation needed to determine exact function
