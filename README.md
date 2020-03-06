@@ -8,6 +8,6 @@ The main goal of the project is to generate TracePro surface property data out o
 The structure of the repo is as follows. Work distribution is indicated by author initials in brackets.
 
 * **documentation** - Functional and process documentation, as well as additional resources [JF/PW]
-* **scilab_scripts** - Scripts for generating TracePro surface property files from goniometer measurements [JF/PW(Validation with TracePro)]
+* **scilab_scripts** - Scripts for generating TracePro surface property files from goniometer measurements [JF]
 * **tracepro_scripts** - Script for generating irradiance maps for different incident elevations using TracePro macro language [PW]
-* **tracepro_simulations** - TracePro evironmets for using the macro above and validating the generated surface property data
+* **tracepro_simulations** - TracePro environments for using the macro above and validating the generated surface property data [PW]
