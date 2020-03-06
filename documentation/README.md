@@ -1,8 +1,8 @@
 # Documentation
-The purpose of this functional documentation is to give the reader an overview on how this project came to be the way it is presented and what to do with the provided scripts. Sources are mainly the TracePro documetation excerpts located in the same folder
+The purpose of this functional documentation is to give the reader an overview on how this project came to be the way it is presented and what to do with the provided scripts. Sources are mainly the TracePro documentation excerpts located in the same folder
 
 ## About the TracePro BRDF Understanding
-TracePro expects brdf data to be provided in form of a Harvey-Shack BSDF Format. With this
+TracePro expects brdf data to be provided in form of a Harvey-Shack BSDF Format. With this format, scattering data is provided relative to the main direction of scatter, which is called the specular direction beta_zero or the angle theta_zero in case of 1D scattering. Whith this diraection at its center, a polar coordinate system is projected onto a unit half sphere shell with the ScatterAzimuth and a scalar beta as the length between beta and beta_zero effectivly beeing the Radius with the maximum value of two as a scattering direction 180° from the specular direction. More detailed infromation is given in the TracePro documentation.
 
 ## About the TracePro Surface Property File
 TracePro Surface Property files can be used to decribe all sort of surface properties, not only scattering ones. Surfaces in TracePro can be described through those files, which have distinctive structure, which is explained in the TracePro documentation. The focus here is to name the most important bits of the format for brdf definition.
@@ -23,12 +23,29 @@ The surface data columns section provides general surface properties for differe
 The brdf data colums feature the same keys as the surface data columns described above, but different values. For every incidence angle, a complete set of numerical scattering information is provided in the form of brdf and (not used by us) btdf values in the form of ScatterBeta and ScatterAzimuth values as per the Harvey-Shack BSDF model described above.
 
 ## A Note on Energy Conversation and Quantitative Measurements
+The incident light is divided into three parts. One is absorbed by the target, and is stated in the Abso_P and Abso_S fields of the Data Columns.  One is reflected in the specular direction and is stated in the Refl_P and Refl_S also in the data colums. The third one ist the Total Scatter which is the total amount of light which is scattered according to the brdf. Those parts must add up to one to fulfill the law of energy conservation.
 
+For the measured data, this rises a significant problem. First of all, no values for the Absorbtance and Reflectance are known. Second, the bsdf data is only provided in spectral "counts" with no real radiometric unit. If this had been the case, one would have to integrate the bsdf over all scatter to get the total scatter, in this case by taking the sum over the bsdf and the corresponding solid angle for all scatter. Thankfully, TracePro can also simulate Properties which don't conserve energy properly, so for our tests, the counts where simply shrunk to an order of magnitude which seemed appropriate for scattering data. For a further analysis however, implementing conservation of energy and scaling the brdf correctly is mandatory.
 
 ## First Idea - Generating BRDF Data from BRDF Data
+In the beginning, no measurements had been performed yet. To proceed with the work nevertheless, a plan was filed to generate irradiance maps capturing the scatter of a known surface in TracePro, recalculating the brdf and than comparing the generated surface property with the original one. This approach has the drawback that potential problems could lay in the process of capturing and parsing the irradiance distribution as well as the brdf calculation itself, and was thus abandoned after real measuremnt data was available. The Irradiance Maps Parser and associated TracePro Script are the remainders of this approach.
 
 ## Validation of BRDF Composer using simulated Data
+Nevertheless, a validation of the Surface Propery Composer script was neccesary and was performed by the means of simulated scattering data. As the measurement data will hav a uniform azimuthal distribution of scatter, no simulations with a variable azimuthal distribution were deemed neccessary, however they should be considered in further development. Three test scenarios were simulated and all showed the expected result.
+
+brdf values all zero
+
+brdf values all constant but not zero
+
+brdf values linarly incresing with ScatterBeta
 
 ## Tales of Getting Scattering Goniometer data in the right format
+The scatter goniometer data contains spectra for all combinations of target and detector azimuth, which had to be processed into the one-dimensional Harvey-Shack format. First of all the theta and theta_zero values where calculated for all combinations. Secondly, as the brdf was supposed not to depend on the ScatterAzimuth, the values for positive and negative theta were averaged for each theta_zero. Lastly, as only angles from 5° to 80° of theta could be obtained for every theta_zero, only those where output in the Surface Property file.
+
+It has to be noted, that due to the nature of the ScatterBeta calculation, there are different values of ScatterBeta for each theta_zero which serve as keys to the brdf values in the Surface Property. TracePro can not handle this. There are three possible solutions to this problem:
+* only output a single theta_zero, which is the workaround implemented at the moment
+* interpolate the Scatter_Beta values onto a smaller grid common for all theta_zero values, greatly increasing the file size
+* set the angles for the goniometer measurement, so that the Scatter_Beta values can be rounded to the same values for all theta_zero values
+with tha last option beeing the most promising.
 
 ## Further down the Road
