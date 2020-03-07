@@ -1,5 +1,6 @@
 spectral_irradiance_map_spherical = zeros(35, 35, 2, 1044) //target azimuth s, detector azimuth e , wavelength/count indicator, wavelength/count data
 
+/*Parse goniometer measurement file*/
 lines = mgetl("io/goniometer_meas.txt")
 for i = 1:4356
     line = lines(i)
@@ -16,9 +17,11 @@ for i = 1:4356
     end
 end
 
+/*Reduce BRDF to one spectral value*/
 irradiance_map_spherical = spectral_irradiance_map_spherical(:,:,2,381) //counts at 550.18969 nm
-irradiance_map_theta = zeros(16,16) //theta 5:5:80, theta_zero 5:5:80
 
+/*Transform BRDF into Harvey-Shack format*/
+irradiance_map_theta = zeros(16,16) //theta 5:5:80, theta_zero 5:5:80
 for target_azimuth = -80:5:80
     for detector_azimuth = -80:5:80
         theta = target_azimuth - detector_azimuth
