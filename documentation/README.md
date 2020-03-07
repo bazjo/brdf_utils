@@ -37,6 +37,7 @@ Nevertheless, a validation of the Surface Property Composer script was necessary
 brdf values all zero
 
 ![brdf values all constant but not zero](https://raw.githubusercontent.com/bazjo/brdf_utils/master/tracepro_simulations/Validation/irradiance_maps/ScatterBetaNotConstant.bmp?token=AF7CCHZMJK3YEWU3ZF2UVZK6NTQEY "brdf values all constant but not zero")
+![brdf values linearly increasing with ScatterBeta](https://raw.githubusercontent.com/bazjo/brdf_utils/master/tracepro_simulations/Validation/irradiance_maps/ScatterBetaLinearIncreasing.bmp?token=AF7CCH2PU2YLMREBYJBIQQC6NTPWG "brdf values linearly increasing with ScatterBeta")
 brdf values all constant but not zero
 
 ![brdf values linearly increasing with ScatterBeta](https://raw.githubusercontent.com/bazjo/brdf_utils/master/tracepro_simulations/Validation/irradiance_maps/ScatterBetaLinearIncreasing.bmp?token=AF7CCH2PU2YLMREBYJBIQQC6NTPWG "brdf values linearly increasing with ScatterBeta")
