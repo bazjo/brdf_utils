@@ -22,7 +22,7 @@ The surface data columns section provides general surface properties for differe
 
 The brdf data columns feature the same keys as the surface data columns described above, but different values. For every incidence angle, a complete set of numerical scattering information is provided in the form of brdf and (not used by us) btdf values in the form of ScatterBeta and ScatterAzimuth values as per the Harvey-Shack BSDF model described above.
 
-## A Note on Energy Conversation and Quantitative Measurements
+## A Note on Energy Conservation and Quantitative Measurements
 The incident light is divided into three parts. One is absorbed by the target, and is stated in the Abso_P and Abso_S fields of the Data Columns.  One is reflected in the specular direction and is stated in the Refl_P and Refl_S also in the data columns. The third one is the Total Scatter which is the total amount of light which is scattered according to the brdf. Those parts must add up to one to fulfill the law of energy conservation.
 
 For the measured data, this rises a significant problem. First of all, no values for the Absorptance and Reflectance are known. Second, the bsdf data is only provided in spectral "counts" with no real radiometric unit. If this had been the case, one would have to integrate the bsdf over all scatter to get the total scatter, in this case by taking the sum over the bsdf and the corresponding solid angle for all scatter. Thankfully, TracePro can also simulate Properties which don't conserve energy properly, so for our tests, the counts where simply shrunk to an order of magnitude which seemed appropriate for scattering data. For a further analysis however, implementing conservation of energy and scaling the brdf correctly is mandatory.
